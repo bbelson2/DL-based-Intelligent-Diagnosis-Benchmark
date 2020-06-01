@@ -97,9 +97,9 @@ class PU(object):
     num_classes = 13
     inputchannel = 1
 
-    def __init__(self, data_dir,normlizetype):
+    def __init__(self, data_dir,normalise_type):
         self.data_dir = data_dir
-        self.normlizetype = normlizetype
+        self.normalise_type = normalise_type
 
     def data_preprare(self, test=False):
         list_data = get_files(self.data_dir, test)
@@ -109,8 +109,8 @@ class PU(object):
         else:
             data_pd = pd.DataFrame({"data": list_data[0], "label": list_data[1]})
             train_pd, val_pd = train_test_split_order(data_pd, test_size=0.2, num_classes= 32)
-            train_dataset = dataset(list_data=train_pd, transform=data_transforms('train',self.normlizetype))
-            val_dataset = dataset(list_data=val_pd, transform=data_transforms('val',self.normlizetype))
+            train_dataset = dataset(list_data=train_pd, transform=data_transforms('train',self.normalise_type))
+            val_dataset = dataset(list_data=val_pd, transform=data_transforms('val',self.normalise_type))
             print(len(train_dataset))
             print(len(val_dataset))
             return train_dataset, val_dataset

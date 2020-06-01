@@ -134,9 +134,9 @@ class CWRUCWT(object):
     num_classes = 10
     inputchannel = 1
 
-    def __init__(self, data_dir,normlizetype):
+    def __init__(self, data_dir,normalise_type):
         self.data_dir = data_dir
-        self.normlizetype = normlizetype
+        self.normalise_type = normalise_type
 
     def data_preprare(self, test=False):
         if len(os.path.basename(self.data_dir).split('.')) == 2:
@@ -152,7 +152,7 @@ class CWRUCWT(object):
         else:
             data_pd = pd.DataFrame({"data": list_data[0], "label": list_data[1]})
             train_pd, val_pd = train_test_split_order(data_pd, test_size=0.2, num_classes= 10)
-            train_dataset = dataset(list_data=train_pd, transform=data_transforms('train',self.normlizetype))
-            val_dataset = dataset(list_data=val_pd, transform=data_transforms('val',self.normlizetype))
+            train_dataset = dataset(list_data=train_pd, transform=data_transforms('train',self.normalise_type))
+            val_dataset = dataset(list_data=val_pd, transform=data_transforms('val',self.normalise_type))
             return train_dataset, val_dataset
 

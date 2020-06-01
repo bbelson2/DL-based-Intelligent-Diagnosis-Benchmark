@@ -18,7 +18,7 @@ def parse_args():
     parser.add_argument('--model_name', type=str, default='Vae1d', help='the name of the model')
     parser.add_argument('--data_name', type=str, default='SEUCWT', help='the name of the data')
     parser.add_argument('--data_dir', type=str, default= "/vann/data", help='the directory of the data')
-    parser.add_argument('--normlizetype', type=str, choices=['0-1', '1-1', 'mean-std'],default="0-1", help='data pre-processing ')
+    parser.add_argument('--normalise_type', type=str, choices=['0-1', '1-1', 'mean-std'],default="0-1", help='data pre-processing ')
     parser.add_argument('--processing_type', type=str, choices=['R_A', 'R_NA', 'O_A'], default='R_A',
                         help='R_A: random split with data augmentation, R_NA: random split without data augmentation, O_A: order split with data augmentation')
     parser.add_argument('--cuda_device', type=str, default='0', help='assign device')
