@@ -30,7 +30,10 @@ class ReSize(object):
     def __init__(self, size=1):
         self.size = size
     def __call__(self, seq):
-        seq = scipy.misc.imresize(seq, self.size, interp='bilinear', mode=None)
+        #seq = scipy.misc.imresize(seq, self.size, interp='bilinear', mode=None)
+        im = Image.fromarray(seq)
+        new_size = tuple((np.array(im.size) * self.size).astype(int))
+        seq = np.array(im.resize(new_size, Image.BILINEAR))
         seq = seq / 255
         return seq
 

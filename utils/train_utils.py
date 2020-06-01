@@ -8,6 +8,7 @@ import warnings
 import torch
 from torch import nn
 from torch import optim
+from thop.profile import profile 
 import models
 
 class train_utils(object):
@@ -99,17 +100,19 @@ class train_utils(object):
     def train(self):
         """
         Training process
-        :return:
+        :return: results
         """
         args = self.args
 
         step = 0
         best_acc = 0.0
+        last_acc = 0.0
+        best_epoch = -1
         batch_count = 0
         batch_loss = 0.0
         batch_acc = 0
         step_start = time.time()
-
+        first_inputs = None
 
         for epoch in range(self.start_epoch, args.max_epoch):
 
@@ -136,6 +139,9 @@ class train_utils(object):
                 for batch_idx, (inputs, labels) in enumerate(self.dataloaders[phase]):
                     inputs = inputs.to(self.device)
                     labels = labels.to(self.device)
+
+                    if first_inputs is None:
+                        first_inputs = inputs
 
                     # Do the learning process, in val, we do not care about the gradient for relaxing
                     with torch.set_grad_enabled(phase == 'train'):
@@ -194,21 +200,34 @@ class train_utils(object):
                     # save the checkpoint for other learning
                     model_state_dic = self.model.module.state_dict() if self.device_count > 1 else self.model.state_dict()
                     # save the best model according to the val accuracy
-                    if epoch_acc > best_acc or epoch > args.max_epoch-2:
+                    if epoch_acc > best_acc:
                         best_acc = epoch_acc
+                        best_epoch = epoch
                         logging.info("save best model epoch {}, acc {:.4f}".format(epoch, epoch_acc))
                         torch.save(model_state_dic,
                                    os.path.join(self.save_dir, '{}-{:.4f}-best_model.pth'.format(epoch, best_acc)))
-
+                    elif epoch > args.max_epoch-2:
+                        last_acc = epoch_acc
+                        logging.info("save last model epoch {}, acc {:.4f}".format(epoch, epoch_acc))
+                        torch.save(model_state_dic,
+                                   os.path.join(self.save_dir, '{}-{:.4f}-last_model.pth'.format(epoch, last_acc)))
 
 
             if self.lr_scheduler is not None:
                 self.lr_scheduler.step()
 
+        # Profiling
+        macs, params = self.do_profiling(first_inputs)
 
+        return {'best_acc': best_acc, 'best_epoch' : best_epoch, 'last_acc': last_acc, 'macs': macs, 'params': params}
 
-
-
+    def do_profiling(self, first_batch_inputs):
+        if first_batch_inputs is None:
+            return None
+        # Reduce batch size to 1
+        inputs = first_batch_inputs[0:1, ...]
+        macs, params = profile(self.model, (inputs,))
+        return macs, params
 
 
 

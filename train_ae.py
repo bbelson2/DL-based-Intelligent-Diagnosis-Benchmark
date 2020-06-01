@@ -17,7 +17,7 @@ def parse_args():
     # basic parameters
     parser.add_argument('--model_name', type=str, default='Vae1d', help='the name of the model')
     parser.add_argument('--data_name', type=str, default='SEUCWT', help='the name of the data')
-    parser.add_argument('--data_dir', type=str, default= "D:\Data\Mechanical-datasets", help='the directory of the data')
+    parser.add_argument('--data_dir', type=str, default= "/vann/data", help='the directory of the data')
     parser.add_argument('--normlizetype', type=str, choices=['0-1', '1-1', 'mean-std'],default="0-1", help='data pre-processing ')
     parser.add_argument('--processing_type', type=str, choices=['R_A', 'R_NA', 'O_A'], default='R_A',
                         help='R_A: random split with data augmentation, R_NA: random split without data augmentation, O_A: order split with data augmentation')
@@ -46,13 +46,24 @@ def parse_args():
     args = parser.parse_args()
     return args
 
+def report(args, results, duration):
+    names = list(args.__dict__.keys())+list(results.keys())+['days', 'seconds', 'microseconds']
+    values = list(args.__dict__.values())+list(results.values())+[duration.days, duration.seconds, duration.microseconds]
+
+    data_file = os.path.join(args.checkpoint_dir, 'results.csv')
+    write_title = not os.path.exists(data_file)
+    with open(data_file, 'a') as f:
+        if write_title:
+            f.write(','.join([str(i) for i in names])+'\n')
+        f.write(','.join([str(i) for i in values])+'\n')
 
 if __name__ == '__main__':
 
+    start_tm = datetime.now()
     args = parse_args()
     os.environ['CUDA_VISIBLE_DEVICES'] = args.cuda_device.strip()
     # Prepare the saving path for the model
-    sub_dir = args.model_name+'_'+args.data_name + '_' + datetime.strftime(datetime.now(), '%m%d-%H%M%S')
+    sub_dir = args.model_name+'_'+args.data_name + '_' + datetime.strftime(start_tm, '%m%d-%H%M%S')
     save_dir = os.path.join(args.checkpoint_dir, sub_dir)
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
@@ -66,8 +77,11 @@ if __name__ == '__main__':
 
     trainer = train_utils(args, save_dir)
     trainer.setup()
-    trainer.train()
+    results = trainer.train()
+    end_tm = datetime.now()
+    duration = end_tm - start_tm
 
+    report(args=args, results=results, duration=duration)
 
 
 
