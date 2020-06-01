@@ -54,11 +54,11 @@ def data_load(fl,label):
 
     return data, lab
 
-def data_transforms(dataset_type="train", normlize_type="-1-1"):
+def data_transforms(dataset_type="train", normalise_type="-1-1"):
     transforms = {
         'train': Compose([
             Reshape(),
-            Normalize(normlize_type),
+            Normalize(normalise_type),
             RandomAddGaussian(),
             RandomScale(),
             RandomStretch(),
@@ -68,7 +68,7 @@ def data_transforms(dataset_type="train", normlize_type="-1-1"):
         ]),
         'val': Compose([
             Reshape(),
-            Normalize(normlize_type),
+            Normalize(normalise_type),
             Retype()
         ])
     }
