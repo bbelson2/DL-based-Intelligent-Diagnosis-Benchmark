@@ -123,7 +123,7 @@ class CWRU(object):
 
         list_data = get_files(self.data_dir, test)
         if test:
-            test_dataset = dataset(list_data=list_data, test=True, transform=None)
+            test_dataset = dataset(list_data=list_data, test=True, transform=data_transforms('val',self.normalise_type))
             return test_dataset
         else:
             data_pd = pd.DataFrame({"data": list_data[0], "label": list_data[1]})

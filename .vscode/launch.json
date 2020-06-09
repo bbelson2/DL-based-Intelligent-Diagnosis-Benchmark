@@ -11,12 +11,10 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "args": [
-                "--model_name", "Ae1d", 
-                "--data_name", "CWRU",
+                "--model_name", "cnn_1d", 
+                "--data_name", "CWRUFFT",
                 "--normalise_type", "mean-std",
                 "--processing_type", "R_A",
-                "--max_epoch", "10",
-                "--middle_epoch", "5",
                 "--data_dir", "/vann/data/dlb/cwru",
                 "--batch_size", "16"
             ]

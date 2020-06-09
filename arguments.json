@@ -1,0 +1,19 @@
+// Train  
+"args": [
+    "--model_name", "cnn_1d", 
+    "--data_name", "CWRU",
+    "--normalise_type", "mean-std",
+    "--processing_type", "R_A",
+    "--max_epoch", "10",
+    "--data_dir", "/vann/data/dlb/cwru",
+    "--batch_size", "16"
+]
+// Test
+"args": [
+    "--model_name", "cnn_1d", 
+    "--data_name", "CWRU",
+    "--normalise_type", "mean-std",
+    "--processing_type", "R_A",
+    "--data_dir", "/vann/data/dlb/cwru",
+    "--batch_size", "16"
+]

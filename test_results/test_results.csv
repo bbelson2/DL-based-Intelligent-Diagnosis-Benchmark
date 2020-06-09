@@ -1,0 +1,10 @@
+model_name,data_name,data_dir,normalise_type,processing_type,cuda_device,checkpoint_dir,results_dir,batch_size,num_workers,accuracy,days,seconds,microseconds,save_dir
+cnn_1d,CWRU,/vann/data/dlb/cwru,mean-std,R_A,0,./checkpoint/best,./test_results,16,0,0.30191570881226054,0,15,1782,./test_results/cnn_1d_CWRU_0609-232052
+cnn_1d,CWRU,/vann/data/dlb/cwru,mean-std,R_A,0,./checkpoint/best,./test_results,16,0,0.30191570881226054,0,1,894702,./test_results/cnn_1d_CWRU_0609-232735
+cnn_1d,CWRU,/vann/data/dlb/cwru,mean-std,R_A,0,./checkpoint/best,./test_results,16,0,0.30191570881226054,0,1,888260,./test_results/cnn_1d_CWRU_0609-232826
+cnn_1d,CWRUFFT,/vann/data/dlb/cwru,mean-std,R_A,0,./checkpoint/best,./test_results,16,0,0.09118773946360154,0,1,948796,./test_results/cnn_1d_CWRUFFT_0609-232930
+cnn_1d,CWRU,/vann/data/dlb/cwru,mean-std,R_A,0,./checkpoint/best,./test_results,16,0,0.9954022988505747,0,67,83743,./test_results/cnn_1d_CWRU_0609-234500
+cnn_1d,CWRUFFT,/vann/data/dlb/cwru,mean-std,R_A,0,./checkpoint/best,./test_results,16,0,0.09118773946360154,0,1,937322,./test_results/cnn_1d_CWRUFFT_0609-234615
+cnn_1d,CWRU,/vann/data/dlb/cwru,mean-std,R_A,0,./checkpoint/best,./test_results,16,0,0.9954022988505747,0,55,224213,./test_results/cnn_1d_CWRU_0609-234729
+cnn_1d,CWRU,/vann/data/dlb/cwru,mean-std,R_A,0,./checkpoint/best,./test_results,16,0,0.9954022988505747,0,1,959524,./test_results/cnn_1d_CWRU_0609-234900
+cnn_1d,CWRU,/vann/data/dlb/cwru,mean-std,R_A,0,./checkpoint/best,./test_results,16,0,0.9954022988505747,0,1,960229,./test_results/cnn_1d_CWRU_0609-235400

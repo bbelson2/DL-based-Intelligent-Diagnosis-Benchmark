@@ -115,7 +115,7 @@ class MFPTCWT(object):
             with open(os.path.join(self.data_dir, "MFPTCWT.pkl"), 'wb') as fo:
                 pickle.dump(list_data, fo)
         if test:
-            test_dataset = dataset(list_data=list_data, test=True, transform=None)
+            test_dataset = dataset(list_data=list_data, test=True, transform=data_transforms('val',self.normalise_type))
             return test_dataset
         else:
             print(len(list_data[0]))

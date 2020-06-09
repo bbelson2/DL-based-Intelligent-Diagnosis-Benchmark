@@ -124,7 +124,7 @@ class XJTUCWT(object):
             with open(os.path.join(self.data_dir, "XJTUCWT.pkl"), 'wb') as fo:
                 pickle.dump(list_data, fo)
         if test:
-            test_dataset = dataset(list_data=list_data, test=True, transform=None)
+            test_dataset = dataset(list_data=list_data, test=True, transform=data_transforms('val',self.normalise_type))
             return test_dataset
         else:
             data_pd = pd.DataFrame({"data": list_data[0], "label": list_data[1]})

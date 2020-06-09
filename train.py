@@ -43,9 +43,9 @@ def parse_args():
     args = parser.parse_args()
     return args
 
-def report(args, results, duration):
-    names = list(args.__dict__.keys())+list(results.keys())+['days', 'seconds', 'microseconds']
-    values = list(args.__dict__.values())+list(results.values())+[duration.days, duration.seconds, duration.microseconds]
+def report(args, results, duration, save_dir):
+    names = list(args.__dict__.keys())+list(results.keys())+['days', 'seconds', 'microseconds', 'save_dir']
+    values = list(args.__dict__.values())+list(results.values())+[duration.days, duration.seconds, duration.microseconds, save_dir]
 
     data_file = os.path.join(args.checkpoint_dir, 'results.csv')
     write_title = not os.path.exists(data_file)
@@ -78,7 +78,7 @@ if __name__ == '__main__':
     end_tm = datetime.now()
     duration = end_tm - start_tm
 
-    report(args=args, results=results, duration=duration)
+    report(args=args, results=results, duration=duration, save_dir=save_dir)
 
 
 
