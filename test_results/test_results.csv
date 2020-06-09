@@ -9,3 +9,8 @@ cnn_1d,CWRU,/vann/data/dlb/cwru,mean-std,R_A,0,./checkpoint/best,./test_results,
 cnn_1d,CWRU,/vann/data/dlb/cwru,mean-std,R_A,0,./checkpoint/best,./test_results,16,0,0.9954022988505747,0,1,959524,./test_results/cnn_1d_CWRU_0609-234900
 cnn_1d,CWRU,/vann/data/dlb/cwru,mean-std,R_A,0,./checkpoint/best,./test_results,16,0,0.9954022988505747,0,1,960229,./test_results/cnn_1d_CWRU_0609-235400
 cnn_1d,CWRUFFT,/vann/data/dlb/cwru,mean-std,B_A,0,./checkpoint/best,./test_results,16,0,0.9938697318007663,0,2,60729,./test_results/cnn_1d_CWRUFFT_0610-001346
+cnn_2d,CWRUCWT,/vann/data/dlb/cwru,mean-std,R_A,0,./checkpoint/best,./test_results,16,0,0.9273408239700375,0,13,733022,./test_results/cnn_2d_CWRUCWT_0610-001956
+cnn_2d,CWRUSlice,/vann/data/dlb/cwru,mean-std,R_A,0,./checkpoint/best,./test_results,16,0,0.7754789272030651,0,6,135080,./test_results/cnn_2d_CWRUSlice_0610-002031
+cnn_1d,CWRUFFT,/vann/data/dlb/cwru,mean-std,R_A,0,./checkpoint/best,./test_results,16,0,0.9977011494252873,0,1,992760,./test_results/cnn_1d_CWRUFFT_0610-002123
+cnn_2d,CWRUSTFT,/vann/data/dlb/cwru,mean-std,R_A,0,./checkpoint/best,./test_results,16,0,0.9908045977011494,0,6,522214,./test_results/cnn_2d_CWRUSTFT_0610-002139
+cnn_2d,CWRUSTFT,/vann/data/dlb/cwru,mean-std,B_A,0,./checkpoint/best,./test_results,16,0,0.9839080459770115,0,6,549768,./test_results/cnn_2d_CWRUSTFT_0610-002220
