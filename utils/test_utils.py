@@ -47,6 +47,9 @@ class test_utils(object):
         elif args.processing_type == 'R_NA':
             from CNN_Datasets.R_NA import datasets
             Dataset = getattr(datasets, args.data_name)
+        elif args.processing_type == 'B_A':
+            from CNN_Datasets.B_A import datasets
+            Dataset = getattr(datasets, args.data_name)
         else:
             raise Exception("processing type not implement")
 
