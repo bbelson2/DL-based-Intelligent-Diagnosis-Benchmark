@@ -162,7 +162,8 @@ class train_utils(object):
         batch_loss = 0.0
         batch_acc = 0
         step_start = time.time()
-        first_inputs = None
+        first_encoder_inputs = None
+        first_decoder_inputs = None
 
         traing_acc = []
         testing_acc = []
@@ -197,22 +198,28 @@ class train_utils(object):
 
                 for batch_idx, (inputs, labels) in enumerate(self.dataloaders[phase]):
                     inputs = inputs.to(self.device)
-                    if first_inputs is None:
-                        first_inputs = inputs
+                    if first_encoder_inputs is None:
+                        first_encoder_inputs = inputs
 
                     # Do the learning process, in val, we do not care about the gradient for relaxing
                     with torch.set_grad_enabled(phase == 'train'):
                     #forward
                         if args.model_name in ["Vae1d", "Vae2d"]:
                             mu, logvar = self.encoder(inputs)
+                            # if first_decoder_inputs is None:
+                            #     first_decoder_inputs = z
                             recx = self.decoder(mu, logvar)
                             loss = self.criterion1(recx, inputs)
                         elif args.model_name in ["Sae1d", "Sae2d"]:
                             z = self.encoder(inputs)
+                            if first_decoder_inputs is None:
+                                first_decoder_inputs = z
                             recx = self.decoder(z)
                             loss = SAEloss(recx, inputs, z)
                         elif args.model_name in ["Ae1d", "Ae2d", "Dae1d", "Dae2d"]:
                             z = self.encoder(inputs)
+                            if first_decoder_inputs is None:
+                                first_decoder_inputs = z
                             recx = self.decoder(z)
                             loss = self.criterion1(recx, inputs)
 
@@ -370,17 +377,22 @@ class train_utils(object):
                 self.lr_scheduler1.step()
 
         # Profiling
-        macs, params = self.do_profiling(first_inputs)
+        emacs, eparams, dmacs, dparams = self.do_profiling(first_encoder_inputs, first_decoder_inputs)
 
-        return {'best_acc': best_acc, 'best_epoch' : best_epoch, 'last_acc': last_acc, 'macs': macs, 'params': params}
+        return {'best_acc': best_acc, 'best_epoch' : best_epoch, 'last_acc': last_acc, 'emacs': emacs, 'eparams': eparams, 'dmacs': dmacs, 'dparams': dparams}
 
-    def do_profiling(self, first_batch_inputs):
-        if first_batch_inputs is None:
+    def do_profiling(self, first_encoder_inputs, first_decoder_inputs):
+        emacs, eparams, dmacs, dparams = None, None, None, None
+        if first_encoder_inputs is None or first_decoder_inputs is None:
             return None
-        # Reduce batch size to 1
-        inputs = first_batch_inputs[0:1, ...]
-        macs, params = profile(self.model, (inputs,))
-        return macs, params
+        # Reduce batch size to 1 and run profiler
+        if not first_encoder_inputs is None:
+            encoder_inputs = first_encoder_inputs[0:1, ...]
+            emacs, eparams = profile(self.encoder, (encoder_inputs,))
+        if not first_decoder_inputs is None:
+            decoder_inputs = first_decoder_inputs[0:1, ...]
+            dmacs, dparams = profile(self.decoder, (decoder_inputs,))
+        return emacs, eparams, dmacs, dparams
 
 
 

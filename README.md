@@ -1,7 +1,7 @@
 
 ## DL-based-Intelligent-Diagnosis-Benchmark
 
-Code release for **[Deep Learning Algorithms for Rotating Machinery Intelligent Diagnosis: An Open Source Benchmark Study](https://arxiv.org/abs/2003.03315)** by [Zhibin dlb](https://dlbzhibin.github.io/), Tianfu Li, and Jingyao Wu.
+Code release for **[Deep Learning Algorithms for Rotating Machinery Intelligent Diagnosis: An Open Source Benchmark Study](https://arxiv.org/abs/2003.03315)** by [Zhibin Zhao](https://Zhaozhibin.github.io/), Tianfu Li, and Jingyao Wu.
 
 ## Correction
 * 2020.05.14, we modified the errors of the dataloaders related to XJTU dataset.
@@ -40,11 +40,11 @@ R_A: random split with data augmentation, R_NA: random split without data augmen
 ## Pakages
 
 This repository is organized as:
-- [AE_Datasets](https://github.com/dlbZhibin/DL-based-Intelligent-Diagnosis-Benchmark/tree/master/AE_Datasets) contains the loader of different datasets for AE models.
-- [CNN_Datasets](https://github.com/dlbZhibin/DL-based-Intelligent-Diagnosis-Benchmark/tree/master/CNN_Datasets) contains the loader of different datasets for MLP, CNN, and RNN models.
-- [datasets](https://github.com/dlbZhibin/DL-based-Intelligent-Diagnosis-Benchmark/tree/master/datasets) contains the data augmentation methods and the Pytorch datasets for 1D and 2D signals.
-- [models](https://github.com/dlbZhibin/DL-based-Intelligent-Diagnosis-Benchmark/tree/master/models) contains the models used in this project.
-- [utils](https://github.com/dlbZhibin/DL-based-Intelligent-Diagnosis-Benchmark/tree/master/utils) contains the functions for realization of the training procedure.
+- [AE_Datasets](https://github.com/ZhaoZhibin/DL-based-Intelligent-Diagnosis-Benchmark/tree/master/AE_Datasets) contains the loader of different datasets for AE models.
+- [CNN_Datasets](https://github.com/ZhaoZhibin/DL-based-Intelligent-Diagnosis-Benchmark/tree/master/CNN_Datasets) contains the loader of different datasets for MLP, CNN, and RNN models.
+- [datasets](https://github.com/ZhaoZhibin/DL-based-Intelligent-Diagnosis-Benchmark/tree/master/datasets) contains the data augmentation methods and the Pytorch datasets for 1D and 2D signals.
+- [models](https://github.com/ZhaoZhibin/DL-based-Intelligent-Diagnosis-Benchmark/tree/master/models) contains the models used in this project.
+- [utils](https://github.com/ZhaoZhibin/DL-based-Intelligent-Diagnosis-Benchmark/tree/master/utils) contains the functions for realization of the training procedure.
 
 
 ## Usage
@@ -63,26 +63,26 @@ This repository is organized as:
 ## Citation
 Codes:
 ```
-@misc{dlb2020,
-author = {Zhibin dlb and Tianfu Li and Jingyao Wu and Chuang Sun and Shibin Wang and Ruqiang Yan and Xuefeng Chen},
+@misc{Zhao2020,
+author = {Zhibin Zhao and Tianfu Li and Jingyao Wu and Chuang Sun and Shibin Wang and Ruqiang Yan and Xuefeng Chen},
 title = {Deep Learning Algorithms for Rotating Machinery Intelligent Diagnosis},
 year = {2020},
 publisher = {GitHub},
 journal = {GitHub repository},
-howpublished = {\url{https://github.com/dlbZhibin/DL-based-Intelligent-Diagnosis-Benchmark}},
+howpublished = {\url{https://github.com/ZhaoZhibin/DL-based-Intelligent-Diagnosis-Benchmark}},
 }
 ```
 Paper:
 ```
-@article{dlb2020deep,
+@article{Zhao2020deep,
   title={Deep Learning Algorithms for Rotating Machinery Intelligent Diagnosis: An Open Source Benchmark Study},
-  author={Zhibin dlb and Tianfu Li and Jingyao Wu and Chuang Sun and Shibin Wang and Ruqiang Yan and Xuefeng Chen},
+  author={Zhibin Zhao and Tianfu Li and Jingyao Wu and Chuang Sun and Shibin Wang and Ruqiang Yan and Xuefeng Chen},
   journal={arXiv preprint arXiv:2003.03315},
   year={2020}
 }
 ```
 ## Contact
-- zhibindlb1993@gmail.com
+- zhibinZhao1993@gmail.com
 - litianfu@stu.xjtu.edu.cn
 
 ## This version

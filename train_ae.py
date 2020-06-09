@@ -50,12 +50,12 @@ def report(args, results, duration):
     names = list(args.__dict__.keys())+list(results.keys())+['days', 'seconds', 'microseconds']
     values = list(args.__dict__.values())+list(results.values())+[duration.days, duration.seconds, duration.microseconds]
 
-    data_file = os.path.join(args.checkpoint_dir, 'results.csv')
+    data_file = os.path.join(args.checkpoint_dir, 'results_ae.csv')
     write_title = not os.path.exists(data_file)
     with open(data_file, 'a') as f:
         if write_title:
             f.write(','.join([str(i) for i in names])+'\n')
-        f.write(','.join([str(i) for i in values])+'\n')
+        f.write(','.join([str(i) if ',' not in str(i) else '"'+str(i)+'"' for i in values])+'\n')
 
 if __name__ == '__main__':
 
