@@ -7,9 +7,9 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd "${DIR}"
 
 # Invoke each script (https://stackoverflow.com/a/8352939)
-/bin/bash ./testCWRU_CNN.sh
-/bin/bash ./testPU_CNN.sh
-/bin/bash ./testMFPT_CNN.sh
-/bin/bash ./testUoC_CNN.sh
-/bin/bash ./testXJTU_CNN.sh
-/bin/bash ./testSEU_CNN.sh
+/bin/bash ./trainCWRU_CNN.sh
+/bin/bash ./trainPU_CNN.sh
+/bin/bash ./trainMFPT_CNN.sh
+/bin/bash ./trainUoC_CNN.sh
+/bin/bash ./trainXJTU_CNN.sh
+/bin/bash ./trainSEU_CNN.sh

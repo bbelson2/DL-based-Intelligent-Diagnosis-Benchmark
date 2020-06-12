@@ -12,10 +12,10 @@
             "console": "integratedTerminal",
             "args": [
                 "--model_name", "cnn_1d", 
-                "--data_name", "CWRUFFT",
+                "--data_name", "PU",
                 "--normalise_type", "mean-std",
-                "--processing_type", "R_A",
-                "--data_dir", "/vann/data/dlb/cwru",
+                "--processing_type", "B_A",
+                "--data_dir", "/vann/data/dlb/pu",
                 "--batch_size", "16"
             ]
         }

@@ -22,8 +22,15 @@ label2=[6,7,8,9,10,11,12,13,14,15,16,17]    #The artificially damaged bearings d
 #3 Bearings with real damages caused by accelerated lifetime tests(14x)
 # RDBdata = ['KA04','KA15','KA16','KA22','KA30','KB23','KB24','KB27','KI04','KI14','KI16','KI17','KI18','KI21']
 # label3=[18,19,20,21,22,23,24,25,26,27,28,29,30,31]  #The artificially damaged bearings data is labeled 16-29
-RDBdata = ['KA04','KA15','KA16','KA22','KA30','KB23','KB24','KB27','KI14','KI16','KI17','KI18','KI21']
-label3=[i for i in range(13)]
+# RDBdata = ['KA04','KA15','KA16','KA22','KA30','KB23','KB24','KB27','KI14','KI16','KI17','KI18','KI21']
+# label3=[i for i in range(13)]
+
+# Restricted sets
+train_data = ['K003','K004','KI16','KI18']
+train_labels = [0, 0, 1, 1]
+test_data = ['K005','KI21']
+test_labels = [0, 1]
+
 #working condition
 WC = ["N15_M07_F10","N09_M07_F10","N15_M01_F10","N15_M07_F04"]
 state = WC[0] #WC[0] can be changed to different working states
@@ -42,11 +49,12 @@ def get_files(root, test=False):
 
     data = []
     lab = []
+    d,l = (train_data, train_labels) if test == False else (test_data, test_labels)
 
-    for k in tqdm(range(len(RDBdata))):
-        name3 = state+"_"+RDBdata[k]+"_1"
-        path3=os.path.join('/tmp',root,RDBdata[k],name3+".mat")        
-        data3, lab3= data_load(path3,name=name3,label=label3[k])
+    for k in tqdm(range(len(d))):
+        name3 = state+"_"+d[k]+"_1"
+        path3=os.path.join('/tmp',root,d[k],name3+".mat")        
+        data3, lab3= data_load(path3,name=name3,label=l[k])
         data +=data3
         lab +=lab3
 
