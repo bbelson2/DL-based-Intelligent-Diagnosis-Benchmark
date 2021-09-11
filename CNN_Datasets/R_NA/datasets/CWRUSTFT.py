@@ -104,13 +104,13 @@ def data_load(filename, axisname, label):
 def data_transforms(dataset_type="train", normalise_type="-1-1"):
     transforms = {
         'train': Compose([
-        ReSize(size=10.0),
+        #ReSize(size=10.0),
         Reshape(),
         Normalize(normalise_type),
         Retype(),
     ]),
         'val': Compose([
-        ReSize(size=10.0),
+        #ReSize(size=10.0),
         Reshape(),
         Normalize(normalise_type),
         Retype(),

@@ -2,4 +2,6 @@
 *.pth
 *.log
 checkpoint/
+data/pu/*.rar
+data/cwru/**/*.mat
 

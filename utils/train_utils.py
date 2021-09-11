@@ -10,6 +10,7 @@ from torch import nn
 from torch import optim
 from thop.profile import profile 
 import models
+from utils.summarise_data import summarise_data
 
 class train_utils(object):
     def __init__(self, args, save_dir):
@@ -57,6 +58,8 @@ class train_utils(object):
         self.datasets = {}
 
         self.datasets['train'], self.datasets['val'] = Dataset(args.data_dir,args.normalise_type).data_preprare()
+
+        summarise_data(self.datasets['train'], self.datasets['val'])
 
         self.dataloaders = {x: torch.utils.data.DataLoader(self.datasets[x], batch_size=args.batch_size,
                                                            shuffle=(True if x == 'train' else False),
