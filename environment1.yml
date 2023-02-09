@@ -1,0 +1,18 @@
+name: dlb
+channels:
+  - pytorch
+  - nvidia
+dependencies:
+  - python=3.7
+  - numpy=1.16.2
+  - pandas=0.24.2
+  - pickle
+  - tqdm=4.31.1
+  - sklearn=0.21.3
+  - scipy=1.2.1
+  - opencv-python=4.1.0.25
+  - PyWavelets=1.0.2
+  - pytorch
+  - torchvision
+  - pytorch-cuda=11.6
+  

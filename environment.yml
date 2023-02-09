@@ -1,0 +1,19 @@
+name: dlb
+channels:
+  # - conda-forge
+  # - nvidia
+  # - pytorch
+dependencies:
+  - python
+  - numpy
+  - pandas
+  - tqdm
+  - scikit-learn
+  - scikit-learn-intelex
+  - scipy
+  - opencv
+  - PyWavelets
+  - nvidia::cudatoolkit
+  - pytorch::pytorch
+  - pytorch::torchvision
+  
