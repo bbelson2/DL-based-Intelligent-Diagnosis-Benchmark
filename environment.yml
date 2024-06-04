@@ -16,4 +16,5 @@ dependencies:
   - nvidia::cudatoolkit
   - pytorch::pytorch
   - pytorch::torchvision
-  
+# Note - follow this with pip install thop
+# Added: sudo apt-get install ffmpeg libsm6 libxext6

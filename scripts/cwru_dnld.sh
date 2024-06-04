@@ -1,10 +1,4 @@
-# On the first wsl Ubuntu (20.04) and on the Alienware, /vann is a root folder
-# cd /vann/data/
-
-# On WSL 22.04, /vann is a folder in the home directory
-cd ~/vann/data/
-
-
+cd /vann/data/
 mkdir -p dlb
 cd dlb
 mkdir -p cwru
